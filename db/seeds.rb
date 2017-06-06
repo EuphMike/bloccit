@@ -19,8 +19,8 @@
    )
  end
  
- Post.find_or_create_by(title: "Test", body: "Test,Test,Test")
- Comment.create_with(title: "Test").find_or_create_by(body: "testy test test")
+ post = Post.find_or_create_by(title: "Test", body: "Test,Test,Test")
+ Comment.find_or_create_by(post: post, body: "testy test test")
  
  puts "Seed finished"
  puts "#{Post.count} posts created"
