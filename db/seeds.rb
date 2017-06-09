@@ -11,13 +11,18 @@
  end
  posts = Post.all
  
- # Create Comments
- # #3
  100.times do
    Comment.create!(
- # #4
      post: posts.sample,
      body: RandomData.random_paragraph
+   )
+ end
+ 
+  100.times do
+   Question.create!(
+     title: RandomData.random_sentence,
+     body: RandomData.random_paragraph,
+     resolved: false
    )
  end
  
