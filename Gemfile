@@ -2,6 +2,10 @@
  
  gem 'rails', '4.2.5'
  
+ group :development do
+  gem "better_errors"
+end
+ 
  group :production do
    gem 'pg'
    gem 'rails_12factor'
@@ -14,10 +18,6 @@
  group :development, :test do
    gem 'rspec-rails', '~> 3.0'
    gem 'shoulda'
- end
-
- group :development do
-   gem "better_errors"
  end
 
  gem 'sass-rails', '~> 5.0'
