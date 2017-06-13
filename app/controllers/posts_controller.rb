@@ -19,7 +19,7 @@ class PostsController < ApplicationController
 
 
      if @post.save
-
+       
        flash[:notice] = "Post was saved."
        redirect_to [@topic, @post]
      else
