@@ -19,8 +19,26 @@
   </div>
 </div>
  
-<h2>Posts</h2>
-<%= render @user.posts %>
- 
-<h2>Comments</h2>
-<%= render @user.comments %>
+<% if(user_has_posts?(@user)) %>
+  <h2>Posts</h2>
+  <%= render @user.posts %>
+<% else %>
+  <p><%= "#{@user.name} has not submitted any posts yet." %></p>
+<% end %>
+
+<% @favorites.each do |fav| %>
+<div class="media">
+  <div class="pull-left"><%= image_tag fav.post.user.avatar_url(64), class: 'media-object' %></div>
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= link_to fav.post.title, topic_post_path(fav.post.topic, fav.post) %>
+    </h4>
+    <small>
+      submitted <%= time_ago_in_words(fav.post.created_at) %> ago by <%= fav.post.user.name %> <br>
+      <%= pluralize(fav.post.comments.count, 'comment') %>,
+      <%= pluralize(fav.post.up_votes, 'up vote') %>,
+      <%= pluralize(fav.post.down_votes, 'down vote') %>
+    </small>
+  </div>
+</div>
+<% end %>
